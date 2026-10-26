@@ -1,0 +1,15 @@
+# Builds examples/daemon.rs against the original daemonize 0.5.0, for comparison.
+[package]
+name = "daemon-v05"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[[bin]]
+name = "daemon-v05"
+path = "../../examples/daemon.rs"
+
+[dependencies]
+daemonize = "=0.5.0"
+
+[workspace]

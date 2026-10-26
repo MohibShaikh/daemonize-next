@@ -1,0 +1,20 @@
+[package]
+name = "daemonize-next"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.77"
+description = "Drop-in replacement for the unmaintained daemonize crate, with its privilege-drop and error-reporting bugs fixed"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/MohibShaikh/daemonize-next"
+keywords = ["daemon", "daemonize", "unix", "fork", "pidfile"]
+categories = ["os::unix-apis"]
+exclude = ["/target", "/.github"]
+
+[lib]
+name = "daemonize"
+
+[dependencies]
+libc = "0.2"
+
+[dev-dependencies]
+tempfile = "3"
