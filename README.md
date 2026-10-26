@@ -66,13 +66,15 @@ Behavior that differs on purpose:
 | Crate | Same API as daemonize 0.5 | Drops supplementary groups | Launcher sees later errors | Dependents |
 |---|---|---|---|---|
 | daemonize 0.5.0 | yes | no | no | 184 |
+| daemonix 0.1.0 | yes | no (no `setgroups` in source) | no (`exit(0)` after the second fork, `src/lib.rs:344`) | 11, including pingora-core and zellij |
 | daemonize2 0.7.0 | no: `start` and `execute` are `unsafe fn`, `chown_pid_file` is split in two | no (no `setgroups` in source) | no (`exit(0)` after the second fork, `src/lib.rs:431-432`) | 4 |
 | blivet 0.15.0 | no: a config struct and `daemonize(&config)`, the launcher never returns, no `chroot`, stdout takes a path | yes | yes | 0 |
 | fork 0.11.0 | no: fork, `setsid` and stdio helpers, no pid file or user switch | n/a | n/a | |
 | `nix::unistd::daemon` | no: `daemon(3)`, no pid file or user switch | n/a | n/a | |
 
-Dependent counts are from crates.io on 2026-10-26. daemonize2's rows are read from its
-published source, not run.
+Dependent counts are from crates.io on 2026-10-26. The daemonix and daemonize2 rows are read
+from their published source, not run. daemonix is a fork of 0.5 that fixes the `transmute`;
+the other 0.5 bugs above are still in its source.
 
 ## For coding agents
 
